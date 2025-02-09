@@ -29,9 +29,30 @@
 		94B161E12D58B7F80022C032 /* QuizzyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuizzyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		9442F0DB2D58C3460042E147 /* Exceptions for "Quizzy" folder in "QuizzyTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Helper/quizes.json,
+			);
+			target = 94B161D32D58B7910022C032 /* QuizzyTests */;
+		};
+		9442F0DC2D58C3470042E147 /* Exceptions for "Quizzy" folder in "QuizzyUITests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Helper/quizes.json,
+			);
+			target = 94B161E02D58B7F80022C032 /* QuizzyUITests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		94B161B82D58B6480022C032 /* Quizzy */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				9442F0DB2D58C3460042E147 /* Exceptions for "Quizzy" folder in "QuizzyTests" target */,
+				9442F0DC2D58C3470042E147 /* Exceptions for "Quizzy" folder in "QuizzyUITests" target */,
+			);
 			path = Quizzy;
 			sourceTree = "<group>";
 		};
