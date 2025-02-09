@@ -19,6 +19,7 @@ class QuizListViewModel: ObservableObject {
     }
     
     //MARK: - Public API
+    @MainActor
     func populateAllQuizes() async {
         do {
             let quizes = try await networkService.getAllQuizes(url: Constants.URLs.allQuizes)

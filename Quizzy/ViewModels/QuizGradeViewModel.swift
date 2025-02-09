@@ -21,6 +21,7 @@ class QuizGradeViewModel: ObservableObject {
     func submitQuiz(submission: QuizSubmission) async {
         do {
             let quizDTO = try await networkService.getQuizById(url: Constants.URLs.quizById(submission.quizId))
+            print(quizDTO)
         } catch {
             print(error)
         }

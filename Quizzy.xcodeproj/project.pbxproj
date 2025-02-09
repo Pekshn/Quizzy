@@ -33,7 +33,17 @@
 		9442F0DB2D58C3460042E147 /* Exceptions for "Quizzy" folder in "QuizzyTests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				DTOs/QuizDTO.swift,
+				Helper/QuizData.swift,
 				Helper/quizes.json,
+				Models/Choice.swift,
+				Models/Grade.swift,
+				Models/Question.swift,
+				Models/Quiz.swift,
+				ViewModels/ChoiceViewModel.swift,
+				ViewModels/QuestionListViewModel.swift,
+				ViewModels/QuizSubmission.swift,
+				ViewModels/QuizViewModel.swift,
 			);
 			target = 94B161D32D58B7910022C032 /* QuizzyTests */;
 		};
