@@ -24,12 +24,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9415C4F22D5954CD00DF9DEC /* Quizzy.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Quizzy.xctestplan; sourceTree = "<group>"; };
 		94B161B62D58B6480022C032 /* Quizzy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quizzy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94B161D42D58B7910022C032 /* QuizzyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuizzyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		94B161E12D58B7F80022C032 /* QuizzyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuizzyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		9415C4FD2D59565900DF9DEC /* Exceptions for "QuizzyUITests" folder in "Quizzy" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Mocks/MockNetworkService.swift,
+			);
+			target = 94B161B52D58B6480022C032 /* Quizzy */;
+		};
 		9442F0DB2D58C3460042E147 /* Exceptions for "Quizzy" folder in "QuizzyTests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -41,6 +49,7 @@
 				Models/Question.swift,
 				Models/Quiz.swift,
 				ViewModels/ChoiceViewModel.swift,
+				ViewModels/GradeViewModel.swift,
 				ViewModels/QuestionListViewModel.swift,
 				ViewModels/QuizSubmission.swift,
 				ViewModels/QuizViewModel.swift,
@@ -50,7 +59,19 @@
 		9442F0DC2D58C3470042E147 /* Exceptions for "Quizzy" folder in "QuizzyUITests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				DTOs/QuizDTO.swift,
+				Factories/NetworkServiceFactory.swift,
+				Helper/QuizData.swift,
 				Helper/quizes.json,
+				Models/Grade.swift,
+				Models/NetworkError.swift,
+				Services/NetworkService.swift,
+				Services/WebService.swift,
+				Utils/Constants.swift,
+				ViewModels/ChoiceViewModel.swift,
+				ViewModels/GradeViewModel.swift,
+				ViewModels/QuestionListViewModel.swift,
+				ViewModels/QuizViewModel.swift,
 			);
 			target = 94B161E02D58B7F80022C032 /* QuizzyUITests */;
 		};
@@ -73,6 +94,9 @@
 		};
 		94B161E22D58B7F80022C032 /* QuizzyUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				9415C4FD2D59565900DF9DEC /* Exceptions for "QuizzyUITests" folder in "Quizzy" target */,
+			);
 			path = QuizzyUITests;
 			sourceTree = "<group>";
 		};
@@ -106,6 +130,7 @@
 		94B161AD2D58B6480022C032 = {
 			isa = PBXGroup;
 			children = (
+				9415C4F22D5954CD00DF9DEC /* Quizzy.xctestplan */,
 				94B161B82D58B6480022C032 /* Quizzy */,
 				94B161D52D58B7910022C032 /* QuizzyTests */,
 				94B161E22D58B7F80022C032 /* QuizzyUITests */,

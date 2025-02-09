@@ -10,6 +10,7 @@ import Foundation
 class QuizGradeViewModel: ObservableObject {
     
     //MARK: - Properties
+    @Published var grade: GradeViewModel?
     var networkService: NetworkService
     
     //MARK: - Init
@@ -18,10 +19,13 @@ class QuizGradeViewModel: ObservableObject {
     }
     
     //MARK: - Public API
+    @MainActor
     func submitQuiz(submission: QuizSubmission) async {
         do {
             let quizDTO = try await networkService.getQuizById(url: Constants.URLs.quizById(submission.quizId))
-            print(quizDTO)
+            let quiz = Quiz(quizDTO: quizDTO)
+            let grade = quiz.grade(submission: submission)
+            self.grade = GradeViewModel(grade: grade)
         } catch {
             print(error)
         }

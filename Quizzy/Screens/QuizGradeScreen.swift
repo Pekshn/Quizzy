@@ -21,6 +21,20 @@ struct QuizGradeScreen: View {
         VStack {
             Spacer()
             
+            if let grade = quizGradeVM.grade {
+                VStack(spacing: 50) {
+                    Text("Final Grade:")
+                        .font(.system(size: 30))
+                        .underline()
+                    Text(grade.letter)
+                        .font(.system(size: 100))
+                        .fontWeight(.bold)
+                        .foregroundColor(.orange)
+                }
+            } else {
+                ProgressView("Calculating grade...")
+            }
+            
             Spacer()
             Button("Start over") {
                 rootPresentationMode.wrappedValue.dismiss()

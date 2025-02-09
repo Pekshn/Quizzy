@@ -7,37 +7,64 @@
 
 import XCTest
 
-final class QuizzyUITests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
-        continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    @MainActor
-    func testExample() throws {
-        // UI tests must launch the application that they test.
+final class WhenAppIsLaunched: XCTestCase {
+    
+    func test_shoulDisplayAvailableQuizes() {
         let app = XCUIApplication()
+        app.launchEnvironment = ["ENV": "TEST"]
+        continueAfterFailure = false
         app.launch()
-
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let quizList = app.collectionViews["quizList"]
+        XCTAssertEqual(2, quizList.cells.count)
     }
+}
 
-    @MainActor
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
-        }
+final class WhenUserTapsOnTheQuiz: XCTestCase {
+    
+    func test_shouldDisplayQuestionsForTheSelectedQuiz() {
+        let app = XCUIApplication()
+        app.launchEnvironment = ["ENV": "TEST"]
+        continueAfterFailure = false
+        app.launch()
+        let quizList = app.collectionViews["quizList"]
+        quizList.cells.staticTexts["Math 101"].tap()
+        let _ = app.collectionViews["questionList"].waitForExistence(timeout: 2)
+        XCTAssertEqual(3, app.collectionViews["questionList"].cells.count)
+    }
+}
+
+final class WhenUserSubmitsQuizWithMissingAnswers: XCTestCase {
+    
+    func test_shouldDisplayErrorMessageOnTheScreen() {
+        let app = XCUIApplication()
+        app.launchEnvironment = ["ENV": "TEST"]
+        continueAfterFailure = false
+        app.launch()
+        let quizList = app.collectionViews["quizList"]
+        quizList.cells.staticTexts["Math 101"].tap()
+        let _ = app.buttons["submitQuizButton"].waitForExistence(timeout: 2)
+        app.buttons["submitQuizButton"].tap()
+        XCTAssertEqual(app.staticTexts["messageText"].label, Constants.Messages.quizSubmissonFailed)
+    }
+}
+
+final class WhenUserSubmitsTheQuiz: XCTestCase {
+    
+    func test_shouldNavigateToTheGradeScreenAndDisplayTheGrade() {
+        let app = XCUIApplication()
+        app.launchEnvironment = ["ENV": "TEST"]
+        continueAfterFailure = false
+        app.launch()
+        let quizList = app.collectionViews["quizList"]
+        quizList.cells.staticTexts["Math 101"].tap()
+        
+        let _ = app.collectionViews["questionList"].waitForExistence(timeout: 5)
+        let questionList = app.collectionViews["questionList"]
+        
+        questionList.children(matching: .cell).element(boundBy: 0).children(matching: .other).element(boundBy: 1).children(matching: .other).element.children(matching: .other).element/*@START_MENU_TOKEN@*/.children(matching: .image).matching(identifier: "square").element(boundBy: 1)/*[[".children(matching: .image).matching(identifier: \"Square\").element(boundBy: 1)",".children(matching: .image).matching(identifier: \"square\").element(boundBy: 1)"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        questionList.children(matching: .cell).element(boundBy: 1).children(matching: .other).element(boundBy: 1).children(matching: .other).element.children(matching: .other).element/*@START_MENU_TOKEN@*/.children(matching: .image).matching(identifier: "square").element(boundBy: 2)/*[[".children(matching: .image).matching(identifier: \"Square\").element(boundBy: 2)",".children(matching: .image).matching(identifier: \"square\").element(boundBy: 2)"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        questionList.children(matching: .cell).element(boundBy: 2).children(matching: .other).element(boundBy: 1).children(matching: .other).element.children(matching: .other).element/*@START_MENU_TOKEN@*/.children(matching: .image).matching(identifier: "square").element(boundBy: 3)/*[[".children(matching: .image).matching(identifier: \"Square\").element(boundBy: 3)",".children(matching: .image).matching(identifier: \"square\").element(boundBy: 3)"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app/*@START_MENU_TOKEN@*/.buttons["submitQuizButton"]/*[[".buttons[\"Submit\"]",".buttons[\"submitQuizButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        XCTAssertTrue(app.staticTexts["A"].waitForExistence(timeout: 2))
     }
 }

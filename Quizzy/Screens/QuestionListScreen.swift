@@ -57,34 +57,30 @@ struct QuestionListScreen: View {
                 .multilineTextAlignment(.center)
                 .accessibility(identifier: "messageText")
             
-            NavigationLink(
-                destination: {
-                    QuizGradeScreen(submission: quizSubmission, quiz: quiz)
-                },
-                label: {
-                    Button("Submit") {
-                        if isSubmissionValid() {
-                            gradeQuiz = true
-                        } else {
-                            message = Constants.Messages.quizSubmissonFailed
-                        }
-                    } //: Button
-                    .frame(maxWidth: .infinity, maxHeight: 44)
-                    .fontWeight(.bold)
-                    .foregroundColor(.white)
-                    .overlay(RoundedRectangle(cornerRadius: 10)
-                        .stroke(lineWidth: 5))
-                    .foregroundColor(.orange)
-                    .padding()
-                    .accessibility(identifier: "submitQuizButton")
+            Button("Submit") {
+                if isSubmissionValid() {
+                    gradeQuiz = true
+                } else {
+                    message = Constants.Messages.quizSubmissonFailed
                 }
-            ) //: NavigationLink
+            } //: Button
+            .frame(maxWidth: .infinity, maxHeight: 44)
+            .fontWeight(.bold)
+            .foregroundColor(.white)
+            .overlay(RoundedRectangle(cornerRadius: 10)
+                .stroke(lineWidth: 5))
+            .foregroundColor(.orange)
+            .padding()
+            .accessibility(identifier: "submitQuizButton")
             
             Spacer()
         } //: VStack
         .onAppear(perform: {
             quizSubmission = QuizSubmission(quizId: quiz.quizId)
         }) //: onAppear
+        .navigationDestination(isPresented: $gradeQuiz) {
+            QuizGradeScreen(submission: quizSubmission, quiz: quiz)
+        } //: navigationDestination
     }
 }
 

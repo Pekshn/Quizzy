@@ -14,7 +14,7 @@ class NetworkServiceFactory {
         let environment = ProcessInfo.processInfo.environment["ENV"]
         if let environment = environment {
             if environment == "TEST" {
-                return Webservice.shared
+                return MockNetworkService.shared
             } else {
                 return Webservice.shared
             }

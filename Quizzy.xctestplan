@@ -1,0 +1,36 @@
+{
+  "configurations" : [
+    {
+      "id" : "A93403BC-05FC-41A8-90EF-A2FB5E983C3E",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:Quizzy.xcodeproj",
+      "identifier" : "94B161B52D58B6480022C032",
+      "name" : "Quizzy"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : false,
+      "target" : {
+        "containerPath" : "container:Quizzy.xcodeproj",
+        "identifier" : "94B161D32D58B7910022C032",
+        "name" : "QuizzyTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Quizzy.xcodeproj",
+        "identifier" : "94B161E02D58B7F80022C032",
+        "name" : "QuizzyUITests"
+      }
+    }
+  ],
+  "version" : 1
+}
