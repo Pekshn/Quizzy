@@ -28,8 +28,8 @@ extension QuizzyApp {
     
     private func setupNavigatonBar() {
         let appearance = UINavigationBarAppearance()
-        appearance.titleTextAttributes = [.foregroundColor: UIColor.orange]
-        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.orange]
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.systemMint]
+        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.systemMint]
         UINavigationBar.appearance().standardAppearance = appearance
         UINavigationBar.appearance().scrollEdgeAppearance = appearance
         UINavigationBar.appearance().compactAppearance = appearance

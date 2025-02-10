@@ -29,7 +29,7 @@ struct QuizListScreen: View {
                     }
                 ) //: NavigationLink
             } //: List
-            .foregroundColor(.orange)
+            .foregroundColor(.mint)
             .padding(.vertical, 30)
             .accessibilityIdentifier("quizList")
             .task {
@@ -38,7 +38,7 @@ struct QuizListScreen: View {
             .navigationTitle("Quizzy")
         } //: NavigationStack
         .environment(\.rootPresentationMode, $selectedQuiz)
-        .accentColor(.orange)
+        .accentColor(.mint)
     }
 }
 

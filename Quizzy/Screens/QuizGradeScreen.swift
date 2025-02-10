@@ -29,7 +29,7 @@ struct QuizGradeScreen: View {
                     Text(grade.letter)
                         .font(.system(size: 100))
                         .fontWeight(.bold)
-                        .foregroundColor(.orange)
+                        .foregroundColor(.mint)
                 }
             } else {
                 ProgressView("Calculating grade...")
@@ -47,7 +47,7 @@ struct QuizGradeScreen: View {
                 RoundedRectangle(cornerRadius: 10)
                     .stroke(lineWidth: 3)
             } //: overlay
-            .foregroundColor(.orange)
+            .foregroundColor(.mint)
             
         } //: VStack
         .navigationTitle(quiz.title)

@@ -24,8 +24,9 @@ struct QuestionListScreen: View {
                     HStack {
                         Text("\(index + 1)")
                             .padding(10)
+                            .fontWeight(.bold)
                             .foregroundColor(.black)
-                            .background(Color.gray)
+                            .background(Color.mint)
                             .clipShape(Circle())
                         
                         HStack {
@@ -40,7 +41,7 @@ struct QuestionListScreen: View {
                                 .onTapGesture {
                                     quizSubmission.addChoice(questionId: question.questionId, choiceId: choice.choiceId)
                                 }
-                                .foregroundColor(quizSubmission.isSelected(questionId: question.questionId, choiceId: choice.choiceId) ? .orange : .white)
+                                .foregroundColor(quizSubmission.isSelected(questionId: question.questionId, choiceId: choice.choiceId) ? .mint : .white)
                             
                             Text(choice.text)
                         } //: HStack
@@ -69,7 +70,7 @@ struct QuestionListScreen: View {
             .foregroundColor(.white)
             .overlay(RoundedRectangle(cornerRadius: 10)
                 .stroke(lineWidth: 5))
-            .foregroundColor(.orange)
+            .foregroundColor(.mint)
             .padding()
             .accessibility(identifier: "submitQuizButton")
             
