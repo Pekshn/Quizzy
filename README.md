@@ -12,3 +12,13 @@ Quizzy iOS app covering:
   -  GitHub Actions – CI/CD pipeline for automatic testing.
 
 📌 Note: No external dependencies – Just download and build.
+
+📸 Screenshots
+
+<table>
+  <tr>
+    <td><img src="Screenshots/SS1.png" width="300"></td>
+    <td><img src="Screenshots/SS2.png" width="300"></td>
+    <td><img src="Screenshots/SS3.png" width="300"></td>
+  </tr>
+</table>
